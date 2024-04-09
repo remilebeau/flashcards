@@ -19,14 +19,16 @@ const AddFlashCard = () => {
       <input
         className="text-black"
         type="text"
-        placeholder="Language One"
+        placeholder="Question"
+        required
         value={question}
         onChange={(event) => setQuestion(event.target.value)}
       />
       <input
         className="text-black"
         type="text"
-        placeholder="Language Two"
+        placeholder="Answer"
+        required
         value={answer}
         onChange={(event) => setAnswer(event.target.value)}
       />
@@ -34,7 +36,7 @@ const AddFlashCard = () => {
         className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
         type="submit"
       >
-        Add Flash Card
+        Add
       </button>
     </form>
   );

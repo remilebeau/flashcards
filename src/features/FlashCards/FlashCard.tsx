@@ -13,6 +13,7 @@ const FlashCard = () => {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [showAnswer, setShowAnswer] = useState(false);
+  const [cardCount, setCardCount] = useState(0);
 
   const selectRandomCard = () => {
     randomCard = flashCards.flashcards[
@@ -28,6 +29,7 @@ const FlashCard = () => {
 
   useEffect(() => {
     selectRandomCard();
+    setCardCount(flashCards.flashcards.length);
   }, [flashCards.flashcards]);
 
   return (
@@ -52,8 +54,10 @@ const FlashCard = () => {
             selectRandomCard();
           }}
         >
-          Next
+          Draw
         </button>
+        {/* show card count */}
+        <h1 className="text-3xl text-white">Card Count: {cardCount}</h1>
       </section>
     </section>
   );
