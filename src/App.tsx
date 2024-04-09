@@ -1,5 +1,5 @@
-import FlashCard from "./components/FlashCard";
-import AddFlashCard from "./components/AddFlashCard";
+import FlashCard from "./features/FlashCards/FlashCard";
+import AddFlashCard from "./features/FlashCards/AddFlashCard";
 
 function App() {
   return (
