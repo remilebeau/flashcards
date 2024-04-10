@@ -10,7 +10,7 @@ const ImportFlashCards = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (questions.length !== answers.length) {
-      setErrMsg("Questions and answers must be the same length");
+      setErrMsg("Each question must have an answer.");
       return;
     }
     questions.forEach((question, index) => {
