@@ -5,7 +5,7 @@ import type { FlashCard } from "./flashCardsSlice";
 
 const FlashCard = () => {
   const flashCards = useAppSelector(selectFlashCards);
-  let randomCard =
+  let displayedCard =
     flashCards.flashcards[
       Math.floor(Math.random() * flashCards.flashcards.length)
     ];
@@ -16,15 +16,15 @@ const FlashCard = () => {
   const [cardCount, setCardCount] = useState(0);
 
   const selectRandomCard = () => {
-    randomCard = flashCards.flashcards[
+    displayedCard = flashCards.flashcards[
       Math.floor(Math.random() * flashCards.flashcards.length)
     ] ?? {
       id: 1,
       question: "question",
       answer: "answer",
     };
-    setQuestion(randomCard.question);
-    setAnswer(randomCard.answer);
+    setQuestion(displayedCard.question);
+    setAnswer(displayedCard.answer);
     setShowAnswer(false);
   };
 
@@ -34,10 +34,10 @@ const FlashCard = () => {
       (card) => card.question === question
     );
     // add 1 to that index to return the next card in the list || return the first card
-    randomCard =
+    displayedCard =
       flashCards.flashcards[currentCardIndex + 1] ?? flashCards.flashcards[0];
-    setQuestion(randomCard.question);
-    setAnswer(randomCard.answer);
+    setQuestion(displayedCard.question);
+    setAnswer(displayedCard.answer);
     setShowAnswer(false);
   };
 
