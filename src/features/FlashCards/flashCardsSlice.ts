@@ -1,15 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../../app/store";
 
-export interface FlashCard {
-  id: number;
+export type FlashCard = {
   question: string;
   answer: string;
-}
+};
 
-export interface FlashCardsState {
+export type FlashCardsState = {
   flashcards: FlashCard[];
-}
+};
 
 const initialState: FlashCardsState = {
   flashcards: [],
@@ -22,9 +21,9 @@ export const flashCardsSlice = createSlice({
     addFlashCard: (state, action: PayloadAction<FlashCard>) => {
       state.flashcards.push(action.payload);
     },
-    deleteFlashCard: (state, action: PayloadAction<number>) => {
+    deleteFlashCard: (state, action: PayloadAction<string>) => {
       state.flashcards = state.flashcards.filter(
-        (flashcard) => flashcard.id !== action.payload
+        (flashcard) => flashcard.question !== action.payload
       );
     },
   },

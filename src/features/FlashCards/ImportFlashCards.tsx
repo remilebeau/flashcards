@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import { addFlashCard, selectFlashCards } from "./flashCardsSlice";
-import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { addFlashCard } from "./flashCardsSlice";
+import { useAppDispatch } from "../../app/hooks";
 
 const ImportFlashCards = () => {
   const dispatch = useAppDispatch();
   const [questions, setQuestions] = useState([""]);
   const [answers, setAnswers] = useState([""]);
-  let id = useAppSelector(selectFlashCards).flashcards.length + 1;
   const [errMsg, setErrMsg] = useState("");
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -15,8 +14,7 @@ const ImportFlashCards = () => {
       return;
     }
     questions.forEach((question, index) => {
-      dispatch(addFlashCard({ id, question, answer: answers[index] }));
-      id++;
+      dispatch(addFlashCard({ question, answer: answers[index] }));
     });
     setQuestions([""]);
     setAnswers([""]);
