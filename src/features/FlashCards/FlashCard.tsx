@@ -47,42 +47,47 @@ const FlashCard = () => {
   }, [flashCards.flashcards]);
 
   return (
-    <section className="bg-slate-900 mt-20 p-4 rounded-3xl">
-      {/* card count */}
-      <h2 className="text-3xl text-white">Card Count: {cardCount}</h2>
-      <section className="grid grid-rows-2 items-center justify-center">
-        <h1 className="text-3xl text-white">
-          {showAnswer ? answer : question}
-        </h1>
-        {/* button to flip card */}
-        <button
-          className="row-start-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 m-2 rounded"
-          onClick={() => {
-            setShowAnswer(!showAnswer);
-          }}
-        >
-          Flip
-        </button>
-        {/* button to draw random card */}
-        <button
-          className="row-start-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 m-2 rounded"
-          onClick={() => {
-            selectRandomCard();
-          }}
-        >
-          Draw Random
-        </button>
-        {/* button to draw next card */}
-        <button
-          className="row-start-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 m-2 rounded"
-          onClick={() => {
-            selectNextCard();
-          }}
-        >
-          Draw Next
-        </button>
+    <>
+      <section className="bg-slate-900 mt-20 p-4 rounded-3xl">
+        <section className="grid grid-rows-2 items-center justify-center">
+          <h1 className="text-3xl text-white">
+            {showAnswer ? answer : question}
+          </h1>
+          {/* button to flip card */}
+          <button
+            className="row-start-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 m-2 rounded"
+            onClick={() => {
+              setShowAnswer(!showAnswer);
+            }}
+          >
+            Flip
+          </button>
+          {/* button to draw random card */}
+          <button
+            className="row-start-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 m-2 rounded"
+            onClick={() => {
+              selectRandomCard();
+            }}
+          >
+            Draw Random
+          </button>
+          {/* button to draw next card */}
+          <button
+            className="row-start-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 m-2 rounded"
+            onClick={() => {
+              selectNextCard();
+            }}
+          >
+            Draw Next
+          </button>
+        </section>
+        {/* card count */}
       </section>
-    </section>
+      <hr className="my-8" />
+      <section className="bg-slate-900 rounded-3xl grid grid-rows-2 items-center justify-center">
+        <h2 className="text-3xl text-white">Card Count: {cardCount}</h2>
+      </section>
+    </>
   );
 };
 

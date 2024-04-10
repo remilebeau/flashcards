@@ -5,7 +5,7 @@ function App() {
   return (
     <main className="min-h-screen bg-black text-white max-w-md mx-auto">
       <AddFlashCard />
-      <br />
+      <hr className="my-8" />
       <FlashCard />
     </main>
   );
