@@ -16,8 +16,6 @@ const ImportFlashCards = () => {
     questions.forEach((question, index) => {
       dispatch(addFlashCard({ question, answer: answers[index] }));
     });
-    setQuestions([""]);
-    setAnswers([""]);
   };
 
   useEffect(() => {
