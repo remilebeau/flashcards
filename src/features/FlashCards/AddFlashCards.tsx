@@ -9,7 +9,6 @@ const AddFlashCards = () => {
   const [errMsg, setErrMsg] = useState("");
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log({ questions });
     if (questions[0] === "") {
       setErrMsg("You must enter at least one question.");
       return;
@@ -20,7 +19,7 @@ const AddFlashCards = () => {
     }
     if (questions.length !== answers.length) {
       setErrMsg(
-        "Each question must have an answer. There may be extra blank lines in the questions or answers fields."
+        "Each question must have an answer. Check the questions and answers fields for blank lines."
       );
       return;
     }
