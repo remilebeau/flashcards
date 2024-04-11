@@ -37,9 +37,9 @@ const AddFlashCards = () => {
 
   return (
     <section className="bg-slate-900 mt-20 p-4 rounded-3xl">
-      <h2 className="text-3xl mb-4 text-center">Add FlashCards</h2>
+      <h2 className="text-3xl mb-4 text-center font-bold">Add FlashCards</h2>
       <h2 className="text-2xl mb-4 text-center">{errMsg}</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="grid grid-rows-2">
         <textarea
           className="text-black mx-4 mb-2 w-1/2"
           name="questions"
@@ -58,7 +58,12 @@ const AddFlashCards = () => {
           rows={10}
           placeholder="Enter your answers here, one per line."
         ></textarea>
-        <button type="submit">Submit</button>
+        <button
+          className="bg-red-500 hover:bg-red-700 text-white font-bold rounded-3xl"
+          type="submit"
+        >
+          Submit
+        </button>
       </form>
     </section>
   );
