@@ -16,11 +16,17 @@ const FlashCard = () => {
   };
 
   const selectRandomCard = () => {
-    displayedCard =
+    // draw a random card from the state
+    const newRandomCard =
       allFlashCards[Math.floor(Math.random() * allFlashCards.length)];
-    setQuestion(displayedCard.question);
-    setAnswer(displayedCard.answer);
-    setShowAnswer(false);
+    if (displayedCard.question === newRandomCard.question) {
+      selectRandomCard();
+    } else {
+      displayedCard = newRandomCard;
+      setQuestion(displayedCard.question);
+      setAnswer(displayedCard.answer);
+      setShowAnswer(false);
+    }
   };
 
   const selectNextCard = () => {
@@ -70,7 +76,6 @@ const FlashCard = () => {
             Draw Next
           </button>
         </section>
-        {/* card count */}
       </section>
     </>
   );
