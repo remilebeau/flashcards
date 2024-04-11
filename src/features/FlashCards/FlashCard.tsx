@@ -4,7 +4,7 @@ import { selectFlashCards } from "./flashCardsSlice";
 import type { FlashCard } from "./flashCardsSlice";
 
 const FlashCard = () => {
-  const allFlashCards = useAppSelector(selectFlashCards);
+  const { flashcards: allFlashCards } = useAppSelector(selectFlashCards);
   let displayedCard;
 
   const [question, setQuestion] = useState("");
@@ -13,8 +13,8 @@ const FlashCard = () => {
   const [cardCount, setCardCount] = useState(0);
 
   const selectRandomCard = () => {
-    displayedCard = allFlashCards.flashcards[
-      Math.floor(Math.random() * allFlashCards.flashcards.length)
+    displayedCard = allFlashCards[
+      Math.floor(Math.random() * allFlashCards.length)
     ] ?? {
       id: 1,
       question: "question",
@@ -27,13 +27,11 @@ const FlashCard = () => {
 
   const selectNextCard = () => {
     // use the question to find the index of the current card
-    const currentCardIndex = allFlashCards.flashcards.findIndex(
+    const currentCardIndex = allFlashCards.findIndex(
       (card) => card.question === question
     );
     // add 1 to that index to return the next card in the list || return the first card
-    displayedCard =
-      allFlashCards.flashcards[currentCardIndex + 1] ??
-      allFlashCards.flashcards[0];
+    displayedCard = allFlashCards[currentCardIndex + 1] ?? allFlashCards[0];
     setQuestion(displayedCard.question);
     setAnswer(displayedCard.answer);
     setShowAnswer(false);
@@ -41,8 +39,8 @@ const FlashCard = () => {
 
   useEffect(() => {
     selectRandomCard();
-    setCardCount(allFlashCards.flashcards.length);
-  }, [allFlashCards.flashcards]);
+    setCardCount(allFlashCards.length);
+  }, [allFlashCards]);
 
   return (
     <>
