@@ -42,42 +42,38 @@ const FlashCard = () => {
   };
 
   return (
-    <>
-      <section className="bg-slate-900 p-4 rounded-3xl">
-        <section className="grid grid-rows-2 grid-cols-3 items-center justify-center">
-          <h1 className="text-3xl text-white col-span-3">
-            {showAnswer ? answer : question}
-          </h1>
-          {/* button to flip card */}
-          <button
-            className="row-start-2 bg-red-500 hover:bg-red-700 text-white font-bold rounded"
-            onClick={() => {
-              setShowAnswer(!showAnswer);
-            }}
-          >
-            Flip
-          </button>
-          {/* button to draw random card */}
-          <button
-            className="row-start-2 bg-red-500 hover:bg-red-700 text-white font-bold rounded"
-            onClick={() => {
-              selectRandomCard();
-            }}
-          >
-            Draw Random
-          </button>
-          {/* button to draw next card */}
-          <button
-            className="row-start-2 bg-red-500 hover:bg-red-700 text-white font-bold rounded"
-            onClick={() => {
-              selectNextCard();
-            }}
-          >
-            Draw Next
-          </button>
-        </section>
-      </section>
-    </>
+    <section className=" bg-slate-900 p-4 rounded-3xl grid grid-rows-2 grid-cols-3 items-center justify-center">
+      <h1 className="text-3xl text-white col-span-3">
+        {showAnswer ? answer : question}
+      </h1>
+      {/* button to flip card */}
+      <button
+        className="row-start-2 bg-red-500 hover:bg-red-700 text-white font-bold rounded"
+        onClick={() => {
+          setShowAnswer(!showAnswer);
+        }}
+      >
+        Flip
+      </button>
+      {/* button to draw random card */}
+      <button
+        className="row-start-2 bg-red-500 hover:bg-red-700 text-white font-bold rounded"
+        onClick={() => {
+          selectRandomCard();
+        }}
+      >
+        Draw Random
+      </button>
+      {/* button to draw next card */}
+      <button
+        className="row-start-2 bg-red-500 hover:bg-red-700 text-white font-bold rounded"
+        onClick={() => {
+          selectNextCard();
+        }}
+      >
+        Draw Next
+      </button>
+    </section>
   );
 };
 
