@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { addFlashCard } from "./flashCardsSlice";
 import { useAppDispatch } from "../../app/hooks";
 
@@ -9,8 +9,13 @@ const AddFlashCards = () => {
   const [errMsg, setErrMsg] = useState("");
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (questions.length < 2) {
+    console.log({ questions });
+    if (questions[0] === "") {
       setErrMsg("You must enter at least one question.");
+      return;
+    }
+    if (answers[0] === "") {
+      setErrMsg("You must enter at least one answer.");
       return;
     }
     if (questions.length !== answers.length) {
@@ -27,10 +32,14 @@ const AddFlashCards = () => {
     setErrMsg("");
   };
 
+  useEffect(() => {
+    setErrMsg("");
+  }, [questions, answers]);
+
   return (
     <section className="bg-slate-900 mt-20 p-4 rounded-3xl">
-      <h1>Import FlashCards</h1>
-      <h2>{errMsg}</h2>
+      <h2 className="text-3xl mb-4 text-center">Add FlashCards</h2>
+      <h2 className="text-2xl mb-4 text-center">{errMsg}</h2>
       <form onSubmit={handleSubmit}>
         <textarea
           className="text-black mx-4 mb-2 w-1/2"
