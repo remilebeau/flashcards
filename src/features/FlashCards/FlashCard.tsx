@@ -1,25 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useAppSelector } from "../../app/hooks";
 import { selectFlashCards } from "./flashCardsSlice";
 import type { FlashCard } from "./flashCardsSlice";
 
 const FlashCard = () => {
   const { flashcards: allFlashCards } = useAppSelector(selectFlashCards);
-  let displayedCard;
 
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [showAnswer, setShowAnswer] = useState(false);
-  const [cardCount, setCardCount] = useState(0);
+
+  let displayedCard: FlashCard = {
+    question,
+    answer,
+  };
 
   const selectRandomCard = () => {
-    displayedCard = allFlashCards[
-      Math.floor(Math.random() * allFlashCards.length)
-    ] ?? {
-      id: 1,
-      question: "question",
-      answer: "answer",
-    };
+    displayedCard =
+      allFlashCards[Math.floor(Math.random() * allFlashCards.length)];
     setQuestion(displayedCard.question);
     setAnswer(displayedCard.answer);
     setShowAnswer(false);
@@ -36,11 +34,6 @@ const FlashCard = () => {
     setAnswer(displayedCard.answer);
     setShowAnswer(false);
   };
-
-  useEffect(() => {
-    selectRandomCard();
-    setCardCount(allFlashCards.length);
-  }, [allFlashCards]);
 
   return (
     <>
@@ -78,10 +71,6 @@ const FlashCard = () => {
           </button>
         </section>
         {/* card count */}
-      </section>
-      <hr className="my-8" />
-      <section className="bg-slate-900 rounded-3xl grid grid-rows-2 items-center justify-center">
-        <h2 className="text-3xl text-white">Card Count: {cardCount}</h2>
       </section>
     </>
   );
