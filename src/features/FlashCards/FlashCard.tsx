@@ -48,7 +48,7 @@ const FlashCard = () => {
       </h1>
       {/* button to flip card */}
       <button
-        className="m-2 rounded-3xl bg-red-500 font-bold text-white hover:bg-red-700"
+        className="m-2 rounded-3xl bg-red-500 font-bold text-white"
         onClick={() => {
           setShowAnswer(!showAnswer);
         }}
@@ -57,7 +57,7 @@ const FlashCard = () => {
       </button>
       {/* button to draw random card */}
       <button
-        className="m-2 rounded-3xl bg-red-500 font-bold text-white hover:bg-red-700"
+        className="m-2 rounded-3xl bg-red-500 font-bold text-white"
         onClick={() => {
           selectRandomCard();
         }}
@@ -66,7 +66,7 @@ const FlashCard = () => {
       </button>
       {/* button to draw next card */}
       <button
-        className="m-2 rounded-3xl bg-red-500 font-bold text-white hover:bg-red-700"
+        className="m-2 rounded-3xl bg-red-500 font-bold text-white"
         onClick={() => {
           selectNextCard();
         }}

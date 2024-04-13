@@ -59,7 +59,7 @@ const AddFlashCards = () => {
           placeholder="Enter your answers here, one per line."
         ></textarea>
         <button
-          className="rounded-3xl bg-red-500 font-bold text-white hover:bg-red-700"
+          className="rounded-3xl bg-red-500 font-bold text-white"
           type="submit"
         >
           Submit
