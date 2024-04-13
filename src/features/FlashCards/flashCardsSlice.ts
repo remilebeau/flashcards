@@ -23,7 +23,7 @@ export const flashCardsSlice = createSlice({
     },
     deleteFlashCard: (state, action: PayloadAction<string>) => {
       state.flashcards = state.flashcards.filter(
-        (flashcard) => flashcard.question !== action.payload
+        (flashcard) => flashcard.question !== action.payload,
       );
     },
   },

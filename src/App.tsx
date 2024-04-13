@@ -4,7 +4,7 @@ import CardCount from "./features/FlashCards/CardCount";
 
 function App() {
   return (
-    <main className="min-h-screen bg-black text-white max-w-md mx-auto">
+    <main className="mx-auto min-h-screen max-w-md bg-black text-white">
       <AddFlashCards />
       <hr className="my-8" />
       <FlashCard />

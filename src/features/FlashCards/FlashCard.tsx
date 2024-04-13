@@ -32,7 +32,7 @@ const FlashCard = () => {
   const selectNextCard = () => {
     // use the question to find the index of the current card
     const currentCardIndex = allFlashCards.findIndex(
-      (card) => card.question === question
+      (card) => card.question === question,
     );
     // add 1 to that index to return the next card in the list || return the first card
     displayedCard = allFlashCards[currentCardIndex + 1] ?? allFlashCards[0];
@@ -42,13 +42,13 @@ const FlashCard = () => {
   };
 
   return (
-    <section className=" bg-slate-900 p-4 rounded-3xl grid grid-rows-2 grid-cols-3 items-center justify-center">
-      <h1 className="text-3xl text-white col-span-3 text-center">
+    <section className=" grid grid-cols-3 grid-rows-2 items-center justify-center rounded-3xl bg-slate-900 p-4">
+      <h1 className="col-span-3 text-center text-3xl text-white">
         {showAnswer ? answer : question}
       </h1>
       {/* button to flip card */}
       <button
-        className="row-start-2 bg-red-500 hover:bg-red-700 text-white font-bold rounded-3xl"
+        className="row-start-2 rounded-3xl bg-red-500 font-bold text-white hover:bg-red-700"
         onClick={() => {
           setShowAnswer(!showAnswer);
         }}
@@ -57,7 +57,7 @@ const FlashCard = () => {
       </button>
       {/* button to draw random card */}
       <button
-        className="row-start-2 bg-red-500 hover:bg-red-700 text-white font-bold rounded-3xl"
+        className="row-start-2 rounded-3xl bg-red-500 font-bold text-white hover:bg-red-700"
         onClick={() => {
           selectRandomCard();
         }}
@@ -66,7 +66,7 @@ const FlashCard = () => {
       </button>
       {/* button to draw next card */}
       <button
-        className="row-start-2 bg-red-500 hover:bg-red-700 text-white font-bold rounded-3xl"
+        className="row-start-2 rounded-3xl bg-red-500 font-bold text-white hover:bg-red-700"
         onClick={() => {
           selectNextCard();
         }}

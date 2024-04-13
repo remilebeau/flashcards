@@ -19,7 +19,7 @@ const AddFlashCards = () => {
     }
     if (questions.length !== answers.length) {
       setErrMsg(
-        "Each question must have an answer. Check the questions and answers fields for blank lines."
+        "Each question must have an answer. Check the questions and answers fields for blank lines.",
       );
       return;
     }
@@ -36,12 +36,12 @@ const AddFlashCards = () => {
   }, [questions, answers]);
 
   return (
-    <section className="bg-slate-900 mt-20 p-4 rounded-3xl">
-      <h2 className="text-3xl mb-4 text-center font-bold">Add FlashCards</h2>
-      <h2 className="text-2xl mb-4 text-center">{errMsg}</h2>
+    <section className="mt-20 rounded-3xl bg-slate-900 p-4">
+      <h2 className="mb-4 text-center text-3xl font-bold">Add FlashCards</h2>
+      <h2 className="mb-4 text-center text-2xl">{errMsg}</h2>
       <form onSubmit={handleSubmit} className="grid grid-rows-2">
         <textarea
-          className="text-black mx-4 mb-2 w-1/2"
+          className="mx-4 mb-2 w-1/2 text-black"
           name="questions"
           id="questions"
           onChange={(event) => setQuestions(event.target.value.split("\n"))}
@@ -50,7 +50,7 @@ const AddFlashCards = () => {
           placeholder="Enter your questions here, one per line."
         ></textarea>
         <textarea
-          className="text-black mx-4 mb-2 w-1/2"
+          className="mx-4 mb-2 w-1/2 text-black"
           name="answers"
           id="answers"
           onChange={(event) => setAnswers(event.target.value.split("\n"))}
@@ -59,7 +59,7 @@ const AddFlashCards = () => {
           placeholder="Enter your answers here, one per line."
         ></textarea>
         <button
-          className="bg-red-500 hover:bg-red-700 text-white font-bold rounded-3xl"
+          className="rounded-3xl bg-red-500 font-bold text-white hover:bg-red-700"
           type="submit"
         >
           Submit
