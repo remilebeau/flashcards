@@ -36,12 +36,12 @@ const AddFlashCards = () => {
   }, [questions, answers]);
 
   return (
-    <section className="mt-20 rounded-3xl bg-slate-900 p-4">
+    <article className="flex flex-col items-center justify-center rounded-3xl bg-slate-900 p-4">
       <h2 className="mb-4 text-center text-3xl font-bold">Add FlashCards</h2>
       <h2 className="mb-4 text-center text-2xl">{errMsg}</h2>
-      <form onSubmit={handleSubmit} className="grid grid-rows-2">
+      <form onSubmit={handleSubmit} className="flex flex-col">
         <textarea
-          className="mx-4 mb-2 w-1/2 text-black"
+          className="mb-4 text-black"
           name="questions"
           id="questions"
           onChange={(event) => setQuestions(event.target.value.split("\n"))}
@@ -50,7 +50,7 @@ const AddFlashCards = () => {
           placeholder="Enter your questions here, one per line."
         ></textarea>
         <textarea
-          className="mx-4 mb-2 w-1/2 text-black"
+          className="mb-4 text-black"
           name="answers"
           id="answers"
           onChange={(event) => setAnswers(event.target.value.split("\n"))}
@@ -65,7 +65,7 @@ const AddFlashCards = () => {
           Submit
         </button>
       </form>
-    </section>
+    </article>
   );
 };
 
