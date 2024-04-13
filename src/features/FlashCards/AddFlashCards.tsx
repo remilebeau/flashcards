@@ -36,7 +36,7 @@ const AddFlashCards = () => {
   }, [questions, answers]);
 
   return (
-    <article className="flex flex-col items-center justify-center rounded-3xl bg-slate-900 p-4">
+    <article className="items-center justify-center rounded-3xl bg-slate-900 p-4">
       <h2 className="mb-4 text-center text-3xl font-bold">Add FlashCards</h2>
       <h2 className="mb-4 text-center text-2xl">{errMsg}</h2>
       <form onSubmit={handleSubmit} className="flex flex-col">
@@ -44,22 +44,24 @@ const AddFlashCards = () => {
           className="mb-4 text-black"
           name="questions"
           id="questions"
+          value={questions.join("\n")}
           onChange={(event) => setQuestions(event.target.value.split("\n"))}
           cols={30}
-          rows={10}
+          rows={5}
           placeholder="Enter your questions here, one per line."
         ></textarea>
         <textarea
           className="mb-4 text-black"
           name="answers"
           id="answers"
+          value={answers.join("\n")}
           onChange={(event) => setAnswers(event.target.value.split("\n"))}
           cols={30}
-          rows={10}
+          rows={5}
           placeholder="Enter your answers here, one per line."
         ></textarea>
         <button
-          className="rounded-3xl bg-red-500 font-bold text-white"
+          className="rounded-3xl bg-red-500 text-3xl font-bold text-white"
           type="submit"
         >
           Submit

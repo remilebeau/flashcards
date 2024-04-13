@@ -42,13 +42,13 @@ const FlashCard = () => {
   };
 
   return (
-    <article className="flex flex-col rounded-3xl bg-slate-900 p-4">
-      <h1 className="mb-4 text-center text-3xl text-white">
+    <article className="grid grid-rows-4 rounded-3xl bg-slate-900 p-4 sm:grid sm:grid-rows-4">
+      <h1 className="mb-4 text-center text-3xl font-bold text-white">
         {showAnswer ? answer : question}
       </h1>
       {/* button to flip card */}
       <button
-        className="m-2 rounded-3xl bg-red-500 font-bold text-white"
+        className="m-2 rounded-3xl bg-red-500 text-3xl font-bold text-white"
         onClick={() => {
           setShowAnswer(!showAnswer);
         }}
@@ -57,7 +57,7 @@ const FlashCard = () => {
       </button>
       {/* button to draw random card */}
       <button
-        className="m-2 rounded-3xl bg-red-500 font-bold text-white"
+        className="m-2 rounded-3xl bg-red-500 text-3xl font-bold text-white"
         onClick={() => {
           selectRandomCard();
         }}
@@ -66,7 +66,7 @@ const FlashCard = () => {
       </button>
       {/* button to draw next card */}
       <button
-        className="m-2 rounded-3xl bg-red-500 font-bold text-white"
+        className="m-2 rounded-3xl bg-red-500 text-3xl font-bold text-white"
         onClick={() => {
           selectNextCard();
         }}
