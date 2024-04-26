@@ -1,6 +1,16 @@
 import { useEffect, useState } from "react";
 import { addFlashCard } from "./flashCardsSlice";
 import { useAppDispatch } from "../../app/hooks";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Plus } from "lucide-react";
 
 const AddFlashCards = () => {
   const dispatch = useAppDispatch();
@@ -36,38 +46,46 @@ const AddFlashCards = () => {
   }, [questions, answers]);
 
   return (
-    <article className="items-center justify-center rounded-3xl bg-slate-900 p-4">
-      <h2 className="mb-4 text-center text-3xl font-bold">Add FlashCards</h2>
-      <h2 className="mb-4 text-center text-2xl">{errMsg}</h2>
-      <form onSubmit={handleSubmit} className="flex flex-col">
-        <textarea
-          className="mb-4 text-black"
-          name="questions"
-          id="questions"
-          value={questions.join("\n")}
-          onChange={(event) => setQuestions(event.target.value.split("\n"))}
-          cols={30}
-          rows={5}
-          placeholder="Enter your questions here, one per line."
-        ></textarea>
-        <textarea
-          className="mb-4 text-black"
-          name="answers"
-          id="answers"
-          value={answers.join("\n")}
-          onChange={(event) => setAnswers(event.target.value.split("\n"))}
-          cols={30}
-          rows={5}
-          placeholder="Enter your answers here, one per line."
-        ></textarea>
-        <button
-          className="rounded-3xl bg-red-500 text-3xl font-bold text-white hover:opacity-90"
-          type="submit"
-        >
-          Submit
-        </button>
-      </form>
-    </article>
+    <Card className="bg-card items-center justify-center rounded-3xl p-4">
+      <CardHeader>
+        <CardTitle className="text-center text-3xl font-bold">
+          Add FlashCards
+        </CardTitle>
+        <CardDescription className="text-lg">{errMsg}</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit} className="flex flex-col">
+          <Textarea
+            className="mb-4"
+            name="questions"
+            id="questions"
+            value={questions.join("\n")}
+            onChange={(event) => setQuestions(event.target.value.split("\n"))}
+            cols={30}
+            rows={5}
+            placeholder="Enter your questions here, one per line."
+          />
+
+          <Textarea
+            className="mb-4 text-black"
+            name="answers"
+            id="answers"
+            value={answers.join("\n")}
+            onChange={(event) => setAnswers(event.target.value.split("\n"))}
+            cols={30}
+            rows={5}
+            placeholder="Enter your answers here, one per line."
+          />
+          <Button
+            className="rounded-3xl text-3xl font-bold hover:opacity-90"
+            variant={"outline"}
+            type="submit"
+          >
+            <Plus />
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
   );
 };
 

@@ -42,7 +42,7 @@ const FlashCard = () => {
   };
 
   return (
-    <article className="grid grid-rows-4 rounded-3xl bg-slate-900 p-4 sm:grid sm:grid-rows-4">
+    <article className="grid grid-rows-4 rounded-3xl p-4 sm:grid sm:grid-rows-4">
       <h1 className="text-center text-5xl font-bold text-white">
         {showAnswer ? answer : question}
       </h1>
