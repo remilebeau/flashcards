@@ -1,20 +1,16 @@
 import FlashCard from "./features/FlashCards/FlashCard";
 import AddFlashCards from "./features/FlashCards/AddFlashCards";
-import CardCount from "./features/FlashCards/CardCount";
 import { ThemeProvider } from "./components/theme-provider";
+// import { ModeToggle } from "./components/mode-toggle";
 
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <main
-        className="mx-auto flex min-h-screen max-w-4xl flex-col sm:grid sm:grid-rows-2 sm:gap-8
-      "
-      >
+      <main className="max-w-4-xl mx-auto flex flex-col gap-8 md:flex-row">
         <AddFlashCards />
-        <section className="flex flex-col items-center">
-          <CardCount />
-        </section>
         <FlashCard />
+        {/* for testing only */}
+        {/* <ModeToggle /> */}
       </main>
     </ThemeProvider>
   );

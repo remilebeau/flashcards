@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { addFlashCard } from "./flashCardsSlice";
-import { useAppDispatch } from "../../app/hooks";
+import { addFlashCard, selectFlashCards } from "./flashCardsSlice";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import {
   Card,
   CardContent,
@@ -13,6 +13,8 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 
 const AddFlashCards = () => {
+  const { flashcards: allFlashCards } = useAppSelector(selectFlashCards);
+  const cardCount = allFlashCards.length;
   const dispatch = useAppDispatch();
   const [questions, setQuestions] = useState([""]);
   const [answers, setAnswers] = useState([""]);
@@ -46,17 +48,19 @@ const AddFlashCards = () => {
   }, [questions, answers]);
 
   return (
-    <Card className="bg-card items-center justify-center rounded-3xl p-4">
+    <Card>
       <CardHeader>
         <CardTitle className="text-center text-3xl font-bold">
           Add FlashCards
         </CardTitle>
-        <CardDescription className="text-lg">{errMsg}</CardDescription>
+        <CardDescription className="text-center text-lg">
+          <p>{`Card Count: ${cardCount}`}</p>
+          <p>{errMsg}</p>
+        </CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-8">
           <Textarea
-            className="mb-4"
             name="questions"
             id="questions"
             value={questions.join("\n")}
@@ -65,9 +69,7 @@ const AddFlashCards = () => {
             rows={5}
             placeholder="Enter your questions here, one per line."
           />
-
           <Textarea
-            className="mb-4 text-black"
             name="answers"
             id="answers"
             value={answers.join("\n")}
@@ -78,7 +80,7 @@ const AddFlashCards = () => {
           />
           <Button
             className="rounded-3xl text-3xl font-bold hover:opacity-90"
-            variant={"outline"}
+            variant="outline"
             type="submit"
           >
             <Plus />

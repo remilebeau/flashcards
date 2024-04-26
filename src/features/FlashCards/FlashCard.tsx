@@ -2,12 +2,13 @@ import { useState } from "react";
 import { useAppSelector } from "../../app/hooks";
 import { selectFlashCards } from "./flashCardsSlice";
 import type { FlashCard } from "./flashCardsSlice";
-
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { MoveHorizontal, Shuffle, CircleArrowRight } from "lucide-react";
 const FlashCard = () => {
   const { flashcards: allFlashCards } = useAppSelector(selectFlashCards);
 
-  const [question, setQuestion] = useState("");
-  const [answer, setAnswer] = useState("");
+  const [question, setQuestion] = useState("Begin by adding cards.");
+  const [answer, setAnswer] = useState("Begin by adding cards.");
   const [showAnswer, setShowAnswer] = useState(false);
 
   let displayedCard: FlashCard = {
@@ -42,38 +43,37 @@ const FlashCard = () => {
   };
 
   return (
-    <article className="grid grid-rows-4 rounded-3xl p-4 sm:grid sm:grid-rows-4">
-      <h1 className="text-center text-5xl font-bold text-white">
-        {showAnswer ? answer : question}
-      </h1>
-      {/* button to flip card */}
-      <button
-        className="m-2 rounded-3xl bg-red-500 text-3xl font-bold text-white hover:opacity-90"
-        onClick={() => {
-          setShowAnswer(!showAnswer);
-        }}
-      >
-        Flip
-      </button>
-      {/* button to draw random card */}
-      <button
-        className="m-2 rounded-3xl bg-red-500 text-3xl font-bold text-white hover:opacity-90"
-        onClick={() => {
-          selectRandomCard();
-        }}
-      >
-        Draw Random
-      </button>
-      {/* button to draw next card */}
-      <button
-        className="m-2 rounded-3xl bg-red-500 text-3xl font-bold text-white hover:opacity-90"
-        onClick={() => {
-          selectNextCard();
-        }}
-      >
-        Draw Next
-      </button>
-    </article>
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-center text-5xl font-bold">
+          {showAnswer ? answer : question}
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="flex flex-row justify-evenly">
+        {/* button to flip card */}
+        <MoveHorizontal
+          onClick={() => {
+            setShowAnswer(!showAnswer);
+          }}
+        />
+        {/* button to draw random card */}
+        <Shuffle
+          onClick={() => {
+            selectRandomCard();
+          }}
+        >
+          Draw Random
+        </Shuffle>
+        {/* button to draw next card */}
+        <CircleArrowRight
+          onClick={() => {
+            selectNextCard();
+          }}
+        >
+          Draw Next
+        </CircleArrowRight>
+      </CardContent>
+    </Card>
   );
 };
 
