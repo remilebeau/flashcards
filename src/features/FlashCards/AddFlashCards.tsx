@@ -11,6 +11,12 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const AddFlashCards = () => {
   const { flashcards: allFlashCards } = useAppSelector(selectFlashCards);
@@ -48,7 +54,7 @@ const AddFlashCards = () => {
   }, [questions, answers]);
 
   return (
-    <Card>
+    <Card className="w-full">
       <CardHeader>
         <CardTitle className="text-center text-3xl font-bold">
           Add FlashCards
@@ -60,6 +66,7 @@ const AddFlashCards = () => {
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+          {/* textarea for questions */}
           <Textarea
             name="questions"
             id="questions"
@@ -69,6 +76,8 @@ const AddFlashCards = () => {
             rows={5}
             placeholder="Enter your questions here, one per line."
           />
+
+          {/* textarea for answers */}
           <Textarea
             name="answers"
             id="answers"
@@ -78,13 +87,18 @@ const AddFlashCards = () => {
             rows={5}
             placeholder="Enter your answers here, one per line."
           />
-          <Button
-            className="rounded-3xl text-3xl font-bold hover:opacity-90"
-            variant="outline"
-            type="submit"
-          >
-            <Plus />
-          </Button>
+
+          {/* button to add cards */}
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button>
+                  <Plus />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>Add Cards</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </form>
       </CardContent>
     </Card>
